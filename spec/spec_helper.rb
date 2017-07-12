@@ -1,14 +1,13 @@
-require 'transactions'
-
+require 'account'
 require 'money'
 require 'simplecov'
-require 'simplecov-json'
+require 'simplecov-console'
 
-SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::JSONFormatter,
-]
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::Console,
+])
 SimpleCov.start
+
 
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

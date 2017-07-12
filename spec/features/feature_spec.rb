@@ -1,13 +1,21 @@
 require 'spec_helper'
 
-describe "Bank" do
-  context 'Transactions' do
-    it 'let me deposit and withdraw funds' do
-      transactions.deposit(Money.new(100000, "GBP"))
-      transactions.withdraw(Money.new(20000, "GBP"))
-      transactions.deposit(Money.new(30000, "GBP"))
-      balance = transactions.log[3]
-      expect(balance).to eq (Money.new(150000, "GBP"))
+describe 'Bank' do
+  context 'Transaction' do
+    let(:transaction) { Transaction.new }
+    let(:my_account) { Account.new }
+
+
+    before(:each) do
+      def sum_in_pounds(sum_in_pounds)
+        Money.new((sum_in_pounds*100), "GBP")
+      end
+
+      it 'can handle a deposit' do
+        my_account.deposit(sum_in_pounds(150.00))
+        expect(my_account.balance).to eq(sum_in_pounds(150))
+      end
+
     end
   end
 end
